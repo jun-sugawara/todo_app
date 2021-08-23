@@ -45,9 +45,25 @@ const Wrapper = styled.div`
 
 function App() {
   return (
-    <div>
-      App
-    </div>
+    <>
+      <Nabvar>
+        <Logo>
+          TODO
+        </Logo>
+        <NavItems>
+          <NavItem>
+            <Link to="/todos">
+              Todos
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/todos/new">
+              Add New Todo
+            </Link>
+          </NavItem>
+        </NavItems>
+      </Nabvar>
+    </>
   )
 }
 
