@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import styled from 'styled-components'
+import styled, { ThemeConsumer } from 'styled-components'
 import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
 import { AiFillEdit } from 'react-icons/ai'
 
@@ -67,9 +67,20 @@ const EditButton = styled.span`
   align-items: center;
   margin: 0 7px;
 `
-
-
 function TodoList() {
+  const [todos, setTodos] = useState([])
+  const [searchName, setSearchName] = useState('')
+
+  useEffect(() => {
+    axios.get('/api/v1/todos.json')
+    .then(resp => {
+      console.log(resp.data)
+      setTodos(resp.data);
+    })
+    .catch(e => {
+      console.log(e);
+    })
+  }, [])
   return (
     <div>
       TodoList
