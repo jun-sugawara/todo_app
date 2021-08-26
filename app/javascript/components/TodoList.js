@@ -81,6 +81,20 @@ function TodoList() {
       console.log(e);
     })
   }, [])
+
+  const removeAllTodos = () => {
+    const sure window.confirm('Are you sure?');
+    if (sure) {
+      axios.delete('/api/v1/todos/destroy_all')
+      .then(resp => {
+        setTodos([])
+      })
+      .catch(e => {
+        console.log(e)
+      })
+    }
+  }
+
   return (
     <div>
       TodoList
