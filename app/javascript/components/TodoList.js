@@ -83,7 +83,7 @@ function TodoList() {
   }, [])
 
   const removeAllTodos = () => {
-    const sure window.confirm('Are you sure?');
+    const sure = window.confirm('Are you sure?');
     if (sure) {
       axios.delete('/api/v1/todos/destroy_all')
       .then(resp => {
@@ -101,7 +101,7 @@ function TodoList() {
       name : val.name,
       is_completed: !val.is_completed
     }
-    axios.patch(`/api/v1/todos/&{val.id}`, data)
+    axios.patch(`/api/v1/todos/${val.id}`, data)
     .then(resp => {
       const newTodos = [...todos]
       newTodos[index].is_completed = resp.data.is_completed
