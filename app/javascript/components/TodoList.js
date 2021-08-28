@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import styled, { ThemeConsumer } from 'styled-components'
+import styled from 'styled-components'
 import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
 import { AiFillEdit } from 'react-icons/ai'
 
-const SearchAndButton = styled.div`
-  display: :flex;
+const SearchAndButtton = styled.div`
+  display: flex;
   justify-content: space-between;
   align-items: center;
 `
+
 const SearchForm = styled.input`
   font-size: 20px;
   width: 100%;
@@ -67,6 +68,7 @@ const EditButton = styled.span`
   align-items: center;
   margin: 0 7px;
 `
+
 function TodoList() {
   const [todos, setTodos] = useState([])
   const [searchName, setSearchName] = useState('')
@@ -110,9 +112,21 @@ function TodoList() {
   }
 
   return (
-    <div>
-      TodoList
-    </div>
+    <>
+      <h1>Todo List</h1>
+      <SearchAndButtton>
+        <SearchForm
+          type="text"
+          placeholder="Search todo..."
+          onChange={event => {
+            setSearchName(event.target.value)
+          }}
+        />
+        <RemoveAllButton onClick={removeAllTodos}>
+          Remove All
+        </RemoveAllButton>
+      </SearchAndButtton>
+    </>
   )
 }
 
