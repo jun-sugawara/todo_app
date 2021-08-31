@@ -126,6 +126,24 @@ function TodoList() {
           Remove All
         </RemoveAllButton>
       </SearchAndButtton>
+
+      <div>
+        {todos.filter((val) => {
+          if(searchName === "") {
+            return val
+          } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
+            return val
+          }
+        }).map((val, key) => {
+          return (
+            <Row key={key}>
+              <TodoName is_completed={val.is_completed}>
+                {val.name}
+              </TodoName>
+            </Row>
+          )
+        })}
+      </div>
     </>
   )
 }
